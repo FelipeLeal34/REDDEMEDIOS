@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %} Editar Instructor {% endblock %}
+
+
+{% block titulo %}
+    EDITAR INSTRUCTOR
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="form-contenedor">
+
+    <form id="form-ins" action="/editar/{{ instructor.0 }}" method="POST" enctype="multipart/form-data">
+
+        <div id="form-ins-contenedor">
+
+            <div class="form-dato">
+                {% with errores = get_flashed_messages() %}
+                    {% if errores %}
+                        {% for error in errores %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+        <div class="form-dato">
+            <label for="">Documento</label>
+            <input type="number" value="{{ instructor.1 }}" class="form-input" name="documento">
+        </div>
+
+        <div class="form-dato">
+            <label for="">Nombre </label>
+            <input type="	text" value="{{ instructor.2 }}" class="form-input" name="nombre">
+        </div>
+
+        <div class="form-dato">
+            <label for="">Apellido </label>
+            <input type="text" value="{{ instructor.3 }}" class="form-input" name="apellido">
+        </div>
+        
+        <div class="form-dato">
+            <label for="">Correo</label>
+            <input type="text" value="{{ instructor.4 }}" class="form-input" name="correo">
+        </div>
+
+        <div class="form-dato">
+            <label for="">Telefono</label>
+            <input type="number" value="{{ instructor.5 }}" class="form-input" name="telefono">
+        </div>
+
+        <div class="form-dato">
+            <label for="foto">Foto<input type="text" class="form-input" name="correo" disabled></label>
+            <input type="file" value="{{ instructor.6 }}" id="foto" accept="image/*" class="form-input" name="foto">
+        </div>
+        <div class="form-dato">
+            <label for=""> Especialidad </label>
+
+        <select class="form-input" name="especialidad">
+            <option value="Inglés" {% if instructor.7 == 'Inglés' %}selected{% endif %}>Inglés</option>
+            <option value="Comunicación" {% if instructor.7 == 'Comunicación' %}selected{% endif %}>Comunicación</option>
+            <option value="Fisica" {% if instructor.7 == 'Fisica' %}selected{% endif %}>Fisica</option>
+            <option value="Matematicas" {% if instructor.7 == 'Matematicas' %}selected{% endif %}>Matematicas</option>
+            <option value="Emprendimiento" {% if instructor.7 == 'Emprendimiento' %}selected{% endif %}>Emprendimiento</option>
+            <option value="Programación" {% if instructor.7 == 'Programación' %}selected{% endif %}>Programación</option>
+        </select>
+        </div>
+
+        <input type="submit" class="btn" value="Enviar">
+
+    </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

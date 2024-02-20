@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} INSTRUCTORES {% endblock %}
+
+{% block titulo %}
+    LISTADO DE INSTRUCTORES
+{% endblock %}
+
+{% block content %}
+
+<div class="tabla">
+
+
+    <div class="btn-contenedor">
+        <button class="btn"><a href="/agregar">Agregar Instructor</a></button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>apellido</th>
+                <th>correo</th>
+                <th>telefono</th> 
+                <th>foto</th>
+                <th>especialización</th>
+                <th colspan="2"></th>
+
+                
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for instructor in instructores %}
+            <tr>
+                <td>
+                    {{ instructor[0] }}
+                </td>
+                <td>
+                    {{ instructor[1] }}
+                </td>
+                <td>
+                    {{ instructor[2] }}
+                </td>
+                <td>
+                    {{ instructor[3] }}
+                </td>
+                <td>
+                    {{ instructor[4] }}
+                </td>
+                <td>
+                    {{ instructor[5] }}
+                </td>
+                <td>
+                    <img src="{{ instructor[6] }}" alt="">
+                </td>
+                <td>
+                    {{ instructor[7] }}
+                </td>
+                <td>
+                    <button class="btn" id="btn-editar"><a href="/editar/{{ instructor[0] }}">Editar</a></button>
+                </td>
+                <td>
+                    <button class="btn" id="btn-eliminar"><a href="/eliminar/{{ instructor[0] }}">Eliminar</a></button>
+                </td>
+            </tr>
+        
+        {% endfor %}
+            
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
